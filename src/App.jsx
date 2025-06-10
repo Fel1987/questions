@@ -4,10 +4,20 @@ import Questions from "./Questions";
 
 const App = () => {
   const [questions, setQuestions] = useState(data);
+  const [activeId, setActiveId] = useState(null);
+
+  function toggleQuestion(id) {
+    // setActiveId(activeId === id ? null : id);
+    setActiveId((currActiveId) => (currActiveId === id ? null : id));
+  }
 
   return (
     <main>
-      <Questions questions={questions} />
+      <Questions
+        questions={questions}
+        activeId={activeId}
+        onHandleToggleQuestion={toggleQuestion}
+      />
     </main>
   );
 };
